@@ -70,14 +70,14 @@
 </style>
 
 <div class="container dashboard-container">
-    <h3 class="dashboard-title">Selamat Datang, {{ Auth::user()->name }} 👋</h3>
+    Selamat Datang, {{ session('user.name') }} 👋
     <p class="dashboard-quote">Temukan, pinjam, dan nikmati bacaan terbaik di Perpustakaan Digital 📚</p>
 
     <div class="row justify-content-center">
 
         {{-- Menu Cari Buku --}}
         <div class="col-md-3">
-            <a href="{{ route('buku.cari') }}" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="menu-card">
                     <i class="bi bi-search menu-icon"></i>
                     <div class="menu-title">Cari Buku</div>
@@ -87,7 +87,7 @@
 
         {{-- Menu Pinjam Buku --}}
         <div class="col-md-3">
-            <a href="{{ route('buku.pinjam') }}" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="menu-card">
                     <i class="bi bi-journal-arrow-down menu-icon"></i>
                     <div class="menu-title">Pinjam Buku</div>
@@ -97,7 +97,7 @@
 
         {{-- Menu Kembalikan Buku --}}
         <div class="col-md-3">
-            <a href="{{ route('buku.kembali') }}" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="menu-card">
                     <i class="bi bi-arrow-repeat menu-icon"></i>
                     <div class="menu-title">Kembalikan Buku</div>
@@ -107,7 +107,7 @@
 
         {{-- Menu Lihat Daftar Buku --}}
         <div class="col-md-3">
-            <a href="{{ route('buku.daftar') }}" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="menu-card">
                     <i class="bi bi-collection menu-icon"></i>
                     <div class="menu-title">Lihat Daftar Buku</div>
@@ -116,7 +116,7 @@
         </div>
     </div>
 
-    <form action="{{ route('logout') }}" method="GET">
+    <form action="#" method="GET">
         <button class="logout-btn mt-4">Logout</button>
     </form>
 </div>

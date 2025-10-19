@@ -73,14 +73,6 @@
             padding: 30px;
         }
 
-        /* Card Modern */
-        .card-modern {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border: none;
-        }
-
         /* Responsive */
         @media (max-width: 991px) {
             .sidebar {
@@ -103,25 +95,45 @@
     <div class="sidebar">
         <h4>📚 Perpustakaan</h4>
 
-        <a href="{{ route('dashboard.admin') }}" class="{{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
-            <i class="bi bi-house"></i> Dashboard
-        </a>
+        {{-- Cek Role Pengguna --}}
+        @if (session('user.level') === 'admin')
+            <a href="{{ route('dashboard.admin') }}" class="{{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
+                <i class="bi bi-house"></i> Dashboard
+            </a>
 
-        <a href="{{ route('kelola.buku') }}" class="{{ request()->routeIs('kelola.buku') ? 'active' : '' }}">
-            <i class="bi bi-book"></i> Kelola Buku
-        </a>
+            <a href="{{ route('kelola.buku') }}" class="{{ request()->routeIs('kelola.buku') ? 'active' : '' }}">
+                <i class="bi bi-book"></i> Kelola Buku
+            </a>
 
-        <a href="{{ route('kelola.anggota') }}" class="{{ request()->routeIs('kelola.anggota') ? 'active' : '' }}">
-            <i class="bi bi-people"></i> Kelola Anggota
-        </a>
+            <a href="{{ route('kelola.anggota') }}" class="{{ request()->routeIs('kelola.anggota') ? 'active' : '' }}">
+                <i class="bi bi-people"></i> Kelola Anggota
+            </a>
 
-        <a href="{{ route('kelola.laporan') }}" class="{{ request()->routeIs('kelola.laporan') ? 'active' : '' }}">
-            <i class="bi bi-file-earmark-text"></i> Laporan
-        </a>
+            <a href="{{ route('kelola.peminjaman') }}" class="{{ request()->routeIs('kelola.peminjaman') ? 'active' : '' }}">
+                <i class="bi bi-arrow-left-right"></i> Kelola Peminjaman
+            </a>
 
-        <a href="{{ route('history') }}" class="{{ request()->routeIs('history') ? 'active' : '' }}">
-            <i class="bi bi-clock-history"></i> History
-        </a>
+            <a href="{{ route('kelola.laporan') }}" class="{{ request()->routeIs('kelola.laporan') ? 'active' : '' }}">
+                <i class="bi bi-file-earmark-text"></i> Lihat Laporan
+            </a>
+
+        @elseif (session('user.level') === 'pengunjung')
+            <a href="{{ route('dashboard.pengunjung') }}" class="{{ request()->routeIs('dashboard.pengunjung') ? 'active' : '' }}">
+                <i class="bi bi-house"></i> Dashboard
+            </a>
+
+            <a href="#" class="{{ request()->routeIs('buku.katalog') ? 'active' : '' }}">
+                <i class="bi bi-collection"></i> Lihat Katalog
+            </a>
+
+            <a href="#" class="{{ request()->routeIs('buku.pinjam') ? 'active' : '' }}">
+                <i class="bi bi-journal-arrow-down"></i> Pinjam Buku
+            </a>
+
+            <a href="#" class="{{ request()->routeIs('status.peminjaman') ? 'active' : '' }}">
+                <i class="bi bi-info-circle"></i> Lihat Status
+            </a>
+        @endif
 
         <a href="{{ route('logout') }}" class="text-danger mt-3 d-block">
             <i class="bi bi-box-arrow-right"></i> Logout
@@ -130,7 +142,9 @@
 
     {{-- Navbar --}}
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
-        <span class="fw-semibold"> Admin 👋</span>
+        <span class="fw-semibold">
+            {{ session('user.name') ?? 'Pengguna' }} 👋
+        </span>
     </nav>
 
     {{-- Main Content --}}
