@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.layouts.app')
 @section('title', 'Riwayat Aktivitas')
 @section('content')
 <div class="container mt-5">
@@ -13,14 +13,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($history as $i => $item)
-            <tr>
-                <td>{{ $i + 1 }}</td>
-                <td>{{ $item['aktivitas'] }}</td>
-                <td>{{ $item['tanggal'] }}</td>
-                <td>{{ $item['status'] }}</td>
-            </tr>
-            @endforeach
+            @if(isset($history) && count($history) > 0)
+                @foreach($history as $i => $item)
+                <tr>
+                    <td>{{ $i + 1 }}</td>
+                    <td>{{ $item['aktivitas'] }}</td>
+                    <td>{{ $item['tanggal'] }}</td>
+                    <td>{{ $item['status'] }}</td>
+                </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td colspan="4" class="text-center">Belum ada riwayat aktivitas.</td>
+                </tr>
+            @endif
         </tbody>
     </table>
 </div>

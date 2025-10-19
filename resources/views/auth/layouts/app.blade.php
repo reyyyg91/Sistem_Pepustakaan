@@ -73,6 +73,14 @@
             padding: 30px;
         }
 
+        /* Card Modern */
+        .card-modern {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
         /* Responsive */
         @media (max-width: 991px) {
             .sidebar {
@@ -95,16 +103,19 @@
     <div class="sidebar">
         <h4>📚 Perpustakaan</h4>
 
-        {{-- Tanpa menu Dashboard --}}
-        <a href="{{ route('kelola.buku') }}" class="{{ request()->routeIs('kelola-buku') ? 'active' : '' }}">
+        <a href="{{ route('dashboard.admin') }}" class="{{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
+            <i class="bi bi-house"></i> Dashboard
+        </a>
+
+        <a href="{{ route('kelola.buku') }}" class="{{ request()->routeIs('kelola.buku') ? 'active' : '' }}">
             <i class="bi bi-book"></i> Kelola Buku
         </a>
 
-        <a href="{{ route('kelola.anggota') }}" class="{{ request()->routeIs('kelola-anggota') ? 'active' : '' }}">
+        <a href="{{ route('kelola.anggota') }}" class="{{ request()->routeIs('kelola.anggota') ? 'active' : '' }}">
             <i class="bi bi-people"></i> Kelola Anggota
         </a>
 
-        <a href="{{ route('kelola.laporan') }}" class="{{ request()->routeIs('kelola-laporan') ? 'active' : '' }}">
+        <a href="{{ route('kelola.laporan') }}" class="{{ request()->routeIs('kelola.laporan') ? 'active' : '' }}">
             <i class="bi bi-file-earmark-text"></i> Laporan
         </a>
 

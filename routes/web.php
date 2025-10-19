@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\AnggotaController;
 
 // =======================
 // LOGIN / LOGOUT
@@ -23,4 +25,14 @@ Route::get('/admin/kelola-buku', [AuthController::class, 'kelolaBuku'])->name('k
 Route::get('/admin/kelola-anggota', [AuthController::class, 'kelolaAnggota'])->name('kelola.anggota');
 Route::get('/admin/kelola-laporan', [AuthController::class, 'kelolaLaporan'])->name('kelola.laporan');
 Route::get('/admin/history', [AuthController::class, 'history'])->name('history');
+
+// =======================
+// CRUD BUKU
+// =======================
+Route::resource('buku', BukuController::class);
+
+// =======================
+// CRUD ANGGOTA
+// =======================
+Route::resource('anggota', AnggotaController::class);
 

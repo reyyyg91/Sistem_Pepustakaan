@@ -56,13 +56,13 @@ class AuthController extends Controller
     // Kelola Buku
     public function kelolaBuku()
     {
-        return view('auth.kelola-buku');
+        return redirect()->route('buku.index');
     }
 
     // Kelola Anggota
     public function kelolaAnggota()
     {
-        return view('auth.kelola-anggota');
+        return redirect()->route('anggota.index');
     }
 
     // Kelola Laporan
@@ -74,6 +74,25 @@ class AuthController extends Controller
     // History
     public function history()
     {
-        return view('auth.history');
+        // Data dummy untuk history
+        $history = [
+            [
+                'aktivitas' => 'Login ke sistem',
+                'tanggal' => '2025-01-27 10:30:00',
+                'status' => 'Berhasil'
+            ],
+            [
+                'aktivitas' => 'Menambah data buku baru',
+                'tanggal' => '2025-01-27 10:35:00',
+                'status' => 'Berhasil'
+            ],
+            [
+                'aktivitas' => 'Mengupdate data anggota',
+                'tanggal' => '2025-01-27 11:00:00',
+                'status' => 'Berhasil'
+            ]
+        ];
+
+        return view('auth.history', compact('history'));
     }
 }
