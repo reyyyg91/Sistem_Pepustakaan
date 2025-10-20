@@ -115,10 +115,6 @@
             </a>
         </div>
     </div>
-
-    <form action="#" method="GET">
-        <button class="logout-btn mt-4">Logout</button>
-    </form>
 </div>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
